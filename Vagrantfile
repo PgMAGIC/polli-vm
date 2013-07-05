@@ -1,17 +1,17 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+Vagrant::configure('2') do |config|
+  config.vm.provider "virtualbox" do |v|
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+	v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+  end
+end
+
 
 Vagrant::Config.run do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
 
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "raring32"
-
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-i386-vagrant-disk1.box"
+  config.vm.box = "precise32"
+  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
   # Boot with a GUI so you can see the screen. (Default is headless)
   config.vm.boot_mode = :headless
