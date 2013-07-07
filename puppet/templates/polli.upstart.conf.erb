@@ -15,6 +15,7 @@ script
     # Not sure why $HOME is needed, but we found that it is:
     export HOME="/root"
     cd /usr/src/polli/
+    export SERVER_IP=<%=@theserverip%>
     exec /usr/bin/coffee server.coffee >> /var/log/node.log 2>&1
 end script
 

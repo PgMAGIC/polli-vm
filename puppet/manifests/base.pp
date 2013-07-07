@@ -1,5 +1,13 @@
 Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 
+
+file{"/etc/profile.d/envsetup.sh":
+  content => "
+export SERVER_IP=${theserverip}
+",
+  replace => true
+}
+
 # setup apt module
 class { 'apt':
   always_apt_update    => false,
